@@ -128,3 +128,18 @@
     @apply font-sans;
   }
 }
+
+@utility animate-gradient-pan {
+  background-size: 200% 200%;
+  animation: gradient-pan 10s ease-in-out infinite;
+}
+
+@keyframes gradient-pan {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}

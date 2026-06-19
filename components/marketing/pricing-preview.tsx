@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { Check, Crown } from "lucide-react"
+import { ArrowRight, Check, Crown } from "lucide-react"
 
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
@@ -67,7 +67,7 @@ const plans: Plan[] = [
 
 export function PricingPreview() {
   return (
-    <section className="relative mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8 lg:py-32">
+    <section className="relative mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-20">
       <div
         aria-hidden
         className="pointer-events-none absolute top-1/2 left-1/2 size-[700px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-purple-600/10 blur-3xl"
@@ -80,7 +80,7 @@ export function PricingPreview() {
         <h2 className="mt-3 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
           Simple, Transparent Pricing
         </h2>
-        <p className="mt-4 text-lg text-muted-foreground">
+        <p className="mt-5 text-lg leading-relaxed text-muted-foreground">
           Start free, upgrade as you scale. No hidden fees, cancel anytime.
         </p>
       </div>
@@ -90,10 +90,10 @@ export function PricingPreview() {
           <Card
             key={plan.name}
             className={cn(
-              "group relative flex flex-col overflow-hidden border border-white/10 bg-white/5 [--card-spacing:--spacing(8)] ring-0 backdrop-blur-xl transition-all duration-500 hover:-translate-y-2",
+              "group relative flex flex-col overflow-hidden border bg-white/5 [--card-spacing:--spacing(8)] ring-0 backdrop-blur-2xl backdrop-saturate-150 transition-all duration-500",
               plan.featured
-                ? "border-indigo-400/40 bg-gradient-to-b from-indigo-500/15 via-purple-600/10 to-transparent shadow-2xl shadow-indigo-950/50 sm:-translate-y-4 sm:scale-105 hover:shadow-indigo-900/60"
-                : "hover:border-white/20 hover:bg-white/8 hover:shadow-xl hover:shadow-black/30"
+                ? "z-10 border-2 border-indigo-400/50 bg-gradient-to-b from-indigo-500/15 via-purple-600/10 to-transparent shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08),0_25px_60px_-15px_rgba(99,102,241,0.5)] sm:-translate-y-4 sm:scale-105 lg:scale-110 hover:-translate-y-5 hover:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.12),0_30px_70px_-15px_rgba(99,102,241,0.7)]"
+                : "border-white/10 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06)] hover:-translate-y-2 hover:border-white/20 hover:bg-white/8 hover:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08),0_20px_40px_-15px_rgba(0,0,0,0.5)]"
             )}
           >
             {plan.featured && (
@@ -111,14 +111,24 @@ export function PricingPreview() {
             )}
 
             <CardHeader className="relative gap-0">
-              <CardTitle className="text-lg font-semibold text-foreground">
+              <CardTitle
+                className={cn(
+                  "font-semibold text-foreground",
+                  plan.featured ? "text-xl" : "text-lg"
+                )}
+              >
                 {plan.name}
               </CardTitle>
               <CardDescription className="mt-1 text-sm text-muted-foreground">
                 {plan.tagline}
               </CardDescription>
               <div className="mt-6 flex items-baseline gap-1">
-                <span className="text-5xl font-semibold tracking-tight text-foreground">
+                <span
+                  className={cn(
+                    "font-semibold tracking-tight text-foreground",
+                    plan.featured ? "text-6xl" : "text-5xl"
+                  )}
+                >
                   {plan.price}
                 </span>
                 <span className="text-base text-muted-foreground">
@@ -128,19 +138,24 @@ export function PricingPreview() {
             </CardHeader>
 
             <CardContent className="relative flex flex-1 flex-col">
-              <ul className="flex flex-1 flex-col gap-3.5">
+              <ul className="flex flex-1 flex-col gap-4">
                 {plan.features.map((feature) => (
                   <li
                     key={feature}
-                    className="flex items-start gap-2.5 text-sm text-muted-foreground"
+                    className={cn(
+                      "flex items-start gap-2.5 text-[15px] leading-snug",
+                      plan.featured
+                        ? "text-foreground/90"
+                        : "text-muted-foreground"
+                    )}
                   >
                     <span
                       className={cn(
-                        "mt-0.5 flex size-4 shrink-0 items-center justify-center rounded-full",
+                        "mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-full",
                         plan.featured ? "bg-emerald-400/20" : "bg-white/10"
                       )}
                     >
-                      <Check className="size-2.5 text-emerald-400" />
+                      <Check className="size-3 text-emerald-400" />
                     </span>
                     {feature}
                   </li>
@@ -151,13 +166,18 @@ export function PricingPreview() {
                 size="lg"
                 asChild
                 className={cn(
-                  "mt-8 h-12 w-full text-base",
+                  "group/btn mt-8 h-12 w-full text-base",
                   plan.featured
-                    ? "border-0 bg-gradient-to-r from-indigo-500 to-purple-600 text-white shadow-lg shadow-indigo-500/30 hover:from-indigo-400 hover:to-purple-500"
+                    ? "h-14 border-0 bg-gradient-to-r from-indigo-500 to-purple-600 text-base font-semibold text-white shadow-lg shadow-indigo-500/40 hover:from-indigo-400 hover:to-purple-500 hover:shadow-indigo-500/60"
                     : "border border-white/15 bg-white/5 text-foreground hover:bg-white/10"
                 )}
               >
-                <Link href="/signup">Get Started</Link>
+                <Link href="/signup" className="flex items-center justify-center gap-2">
+                  Get Started
+                  {plan.featured && (
+                    <ArrowRight className="size-4 transition-transform duration-300 group-hover/btn:translate-x-1" />
+                  )}
+                </Link>
               </Button>
             </CardContent>
           </Card>

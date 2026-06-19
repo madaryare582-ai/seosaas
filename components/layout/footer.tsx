@@ -29,17 +29,21 @@ const footerColumns = [
 
 export function Footer() {
   return (
-    <footer className="relative border-t border-white/10 bg-background">
+    <footer className="relative overflow-hidden border-t border-white/10 bg-background">
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 bg-gradient-to-t from-indigo-950/10 to-transparent"
+        className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -top-40 left-1/2 size-[500px] -translate-x-1/2 rounded-full bg-indigo-600/10 blur-3xl"
       />
 
-      <div className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-        <div className="flex flex-col gap-12 lg:flex-row lg:justify-between">
+      <div className="relative mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-20">
+        <div className="flex flex-col gap-14 lg:flex-row lg:justify-between lg:gap-8">
           <div className="max-w-xs">
             <Link href="/" className="flex items-center gap-2">
-              <span className="flex size-8 items-center justify-center rounded-lg bg-gradient-to-br from-indigo-500 to-purple-600">
+              <span className="flex size-8 items-center justify-center rounded-lg bg-gradient-to-br from-indigo-500 to-purple-600 shadow-lg shadow-indigo-950/40">
                 <Sparkles className="size-4 text-white" />
               </span>
               <span className="text-lg font-semibold tracking-tight text-foreground">
@@ -53,18 +57,18 @@ export function Footer() {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 sm:gap-12">
+          <div className="grid grid-cols-2 gap-10 sm:grid-cols-3 sm:gap-16">
             {footerColumns.map((column) => (
               <div key={column.title}>
-                <h3 className="text-sm font-semibold text-foreground">
+                <h3 className="text-xs font-semibold tracking-widest text-muted-foreground uppercase">
                   {column.title}
                 </h3>
-                <ul className="mt-4 flex flex-col gap-3">
+                <ul className="mt-5 flex flex-col gap-3.5">
                   {column.links.map((link) => (
                     <li key={link.label}>
                       <Link
                         href={link.href}
-                        className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+                        className="inline-block text-sm text-foreground/70 transition-all duration-200 hover:translate-x-0.5 hover:text-foreground"
                       >
                         {link.label}
                       </Link>
@@ -76,7 +80,7 @@ export function Footer() {
           </div>
         </div>
 
-        <Separator className="my-12" />
+        <Separator className="my-14 bg-white/10" />
 
         <p className="text-center text-sm text-muted-foreground">
           © 2026 HiigsiSEO. All rights reserved.

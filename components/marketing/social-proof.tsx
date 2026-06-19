@@ -67,7 +67,7 @@ function StatCard({ stat }: { stat: Stat }) {
   return (
     <div
       ref={ref}
-      className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-8 text-center backdrop-blur-xl transition-all duration-500 hover:-translate-y-1 hover:border-indigo-400/30 hover:bg-white/8"
+      className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-8 text-center shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06)] backdrop-blur-2xl backdrop-saturate-150 transition-all duration-500 hover:-translate-y-1 hover:border-indigo-400/30 hover:bg-white/8 hover:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.1),0_20px_40px_-15px_rgba(49,46,129,0.4)]"
     >
       <div
         aria-hidden
@@ -89,8 +89,8 @@ function StatCard({ stat }: { stat: Stat }) {
 
 export function SocialProof() {
   return (
-    <section className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-      <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
+    <section className="relative mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-20">
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-3 lg:gap-8">
         {stats.map((stat) => (
           <StatCard key={stat.label} stat={stat} />
         ))}

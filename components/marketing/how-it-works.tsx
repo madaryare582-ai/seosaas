@@ -1,4 +1,11 @@
-import { FileText, Search, SquareCheckBig, Target, type LucideIcon } from "lucide-react"
+import {
+  ChevronRight,
+  FileText,
+  Search,
+  SquareCheckBig,
+  Target,
+  type LucideIcon,
+} from "lucide-react"
 
 type Step = {
   number: string
@@ -34,9 +41,18 @@ const steps: Step[] = [
   },
 ]
 
+const stepGlow = [
+  "shadow-indigo-500/25",
+  "shadow-indigo-500/35",
+  "shadow-purple-500/45",
+  "shadow-purple-500/60",
+]
+
+const chevronOpacity = ["opacity-40", "opacity-65", "opacity-90"]
+
 export function HowItWorks() {
   return (
-    <section className="relative mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8 lg:py-32">
+    <section className="relative mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-20">
       <div
         aria-hidden
         className="pointer-events-none absolute top-1/2 left-1/2 size-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-purple-600/10 blur-3xl"
@@ -49,7 +65,7 @@ export function HowItWorks() {
         <h2 className="mt-3 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
           From Keyword To Published Content
         </h2>
-        <p className="mt-4 text-lg text-muted-foreground">
+        <p className="mt-5 text-lg leading-relaxed text-muted-foreground">
           A guided, four-step workflow that turns a niche into a fully ranked
           content library.
         </p>
@@ -59,18 +75,30 @@ export function HowItWorks() {
       <div className="relative mt-20 hidden lg:block">
         <div
           aria-hidden
-          className="absolute top-9 right-[12.5%] left-[12.5%] h-px bg-gradient-to-r from-indigo-500 via-purple-500 to-indigo-500"
+          className="absolute top-9 right-[12.5%] left-[12.5%] h-[3px] -translate-y-1/2 rounded-full bg-gradient-to-r from-indigo-500/50 via-purple-500 to-purple-400 shadow-[0_0_16px_2px_rgba(168,85,247,0.45)]"
         />
+
+        {[25, 50, 75].map((left, i) => (
+          <ChevronRight
+            key={left}
+            aria-hidden
+            className={`absolute top-9 z-10 size-5 -translate-x-1/2 -translate-y-1/2 text-purple-300 ${chevronOpacity[i]}`}
+            style={{ left: `${left}%` }}
+          />
+        ))}
+
         <div className="grid grid-cols-4 gap-x-8">
-          {steps.map((step) => (
+          {steps.map((step, index) => (
             <div
               key={step.number}
               className="group relative flex flex-col items-center text-center"
             >
-              <span className="relative z-10 flex size-[4.5rem] items-center justify-center rounded-full border border-white/10 bg-gradient-to-br from-indigo-500 to-purple-600 shadow-lg shadow-indigo-950/50 ring-4 ring-background transition-transform duration-500 group-hover:scale-110">
+              <span
+                className={`relative z-10 flex size-[4.5rem] items-center justify-center rounded-full border border-white/10 bg-gradient-to-br from-indigo-500 to-purple-600 shadow-lg ring-[6px] ring-background transition-transform duration-500 group-hover:scale-110 ${stepGlow[index]}`}
+              >
                 <step.icon className="size-7 text-white" />
               </span>
-              <span className="mt-4 font-mono text-xs font-semibold tracking-widest text-indigo-400/70">
+              <span className="mt-4 font-mono text-xs font-semibold tracking-widest text-indigo-300">
                 STEP {step.number}
               </span>
               <h3 className="mt-3 text-lg font-semibold text-foreground">
@@ -88,16 +116,18 @@ export function HowItWorks() {
       <div className="relative mt-16 lg:hidden">
         <div
           aria-hidden
-          className="absolute top-2 bottom-2 left-9 w-px bg-gradient-to-b from-indigo-500/70 via-purple-500/40 to-transparent"
+          className="absolute top-2 bottom-2 left-9 w-[3px] rounded-full bg-gradient-to-b from-indigo-500/70 via-purple-500/50 to-purple-400/20 shadow-[0_0_12px_1px_rgba(168,85,247,0.35)]"
         />
         <div className="flex flex-col gap-10">
-          {steps.map((step) => (
+          {steps.map((step, index) => (
             <div key={step.number} className="relative flex gap-6">
-              <span className="relative z-10 flex size-[4.5rem] shrink-0 items-center justify-center rounded-full border border-white/10 bg-gradient-to-br from-indigo-500 to-purple-600 shadow-lg shadow-indigo-950/50 ring-4 ring-background">
+              <span
+                className={`relative z-10 flex size-[4.5rem] shrink-0 items-center justify-center rounded-full border border-white/10 bg-gradient-to-br from-indigo-500 to-purple-600 shadow-lg ring-[6px] ring-background ${stepGlow[index]}`}
+              >
                 <step.icon className="size-7 text-white" />
               </span>
               <div className="pt-2">
-                <span className="font-mono text-xs font-semibold tracking-widest text-indigo-400/70">
+                <span className="font-mono text-xs font-semibold tracking-widest text-indigo-300">
                   STEP {step.number}
                 </span>
                 <h3 className="mt-1 text-lg font-semibold text-foreground">
