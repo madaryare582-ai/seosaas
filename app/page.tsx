@@ -7,6 +7,7 @@ import { Testimonials } from "@/components/marketing/testimonials"
 import { HowItWorks } from "@/components/marketing/how-it-works"
 import { PricingPreview } from "@/components/marketing/pricing-preview"
 import { FAQ } from "@/components/marketing/faq"
+import { DashboardPreview } from "@/components/marketing/dashboard-preview"
 import { CTA } from "@/components/marketing/cta"
 
 export default function Home() {
@@ -21,6 +22,7 @@ export default function Home() {
         <HowItWorks />
         <PricingPreview />
         <FAQ />
+        <DashboardPreview />
         <CTA />
       </main>
       <Footer />
