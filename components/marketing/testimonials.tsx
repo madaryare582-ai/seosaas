@@ -44,16 +44,15 @@ const testimonials: Testimonial[] = [
 export function Testimonials() {
   return (
     <section className="relative mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-20">
-      <div
-        aria-hidden
-        className="pointer-events-none absolute top-1/2 left-1/2 size-[650px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-indigo-600/10 blur-3xl"
-      />
+      <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div className="absolute top-1/2 left-1/2 size-[650px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-indigo-600/10 blur-3xl" />
+      </div>
 
       <div className="relative mx-auto max-w-2xl text-center">
         <span className="text-sm font-semibold tracking-wide text-indigo-400 uppercase">
           Social Proof
         </span>
-        <h2 className="mt-3 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
+        <h2 className="font-heading mt-3 text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
           Loved By Creators And Agencies Alike
         </h2>
         <p className="mt-5 text-lg leading-relaxed text-muted-foreground">

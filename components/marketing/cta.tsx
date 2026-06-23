@@ -19,7 +19,7 @@ export function CTA({
   ],
 }: CTAProps = {}) {
   return (
-    <section className="relative mx-auto max-w-7xl px-4 py-10 sm:px-6 sm:py-12 lg:px-8 lg:py-14">
+    <section className="relative mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-20">
       <div className="animate-gradient-pan relative isolate overflow-hidden rounded-3xl border border-white/15 bg-gradient-to-br from-indigo-600 via-violet-600 to-fuchsia-600 px-6 py-10 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.2),0_30px_70px_-20px_rgba(99,21,255,0.4)] sm:px-10 sm:py-12 lg:px-14 lg:py-14">
         <div
           aria-hidden
@@ -38,8 +38,8 @@ export function CTA({
           className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/0 via-black/0 to-black/15"
         />
 
-        <div className="relative flex flex-col items-center gap-10 lg:flex-row lg:items-center lg:justify-between lg:gap-12">
-          <div className="max-w-xl text-center lg:text-left">
+        <div className="relative flex flex-col items-center gap-10 md:flex-row md:items-center md:justify-between md:gap-10 lg:gap-12">
+          <div className="max-w-xl text-center md:text-left lg:max-w-2xl">
             <h2 className="text-2xl font-semibold tracking-tight text-white sm:text-3xl lg:text-4xl">
               {headline}
             </h2>
@@ -47,7 +47,7 @@ export function CTA({
               {description}
             </p>
 
-            <div className="mt-6 flex flex-wrap items-center justify-center gap-3 lg:justify-start">
+            <div className="mt-6 flex flex-wrap items-center justify-center gap-3 md:justify-start">
               {trustSignals.map((signal) => (
                 <div
                   key={signal}

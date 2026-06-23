@@ -54,16 +54,15 @@ export function DashboardPreview({
 }: DashboardPreviewProps = {}) {
   return (
     <section className="relative mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-20">
-      <div
-        aria-hidden
-        className="pointer-events-none absolute top-1/2 left-1/2 size-[750px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-indigo-600/10 blur-3xl"
-      />
+      <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div className="absolute top-1/2 left-1/2 size-[750px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-indigo-600/10 blur-3xl" />
+      </div>
 
       <div className="relative mx-auto max-w-2xl text-center">
         <span className="text-sm font-semibold tracking-wide text-indigo-400 uppercase">
           {eyebrow}
         </span>
-        <h2 className="mt-3 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
+        <h2 className="font-heading mt-3 text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
           {heading}
         </h2>
         <p className="mt-5 text-lg leading-relaxed text-muted-foreground">
@@ -160,9 +159,9 @@ export function DashboardPreview({
                   >
                     <div className="flex items-center gap-2 text-muted-foreground">
                       <metric.icon className={`size-4 ${metric.accent}`} />
-                      <span className="text-xs font-medium">{metric.label}</span>
+                      <span className="text-xs font-medium tracking-wide">{metric.label}</span>
                     </div>
-                    <p className="mt-2 text-xl font-semibold text-foreground">
+                    <p className="mt-2 text-xl font-bold text-foreground">
                       {metric.value}
                     </p>
                   </div>
@@ -172,7 +171,7 @@ export function DashboardPreview({
               <div className="rounded-xl border border-white/10 bg-white/5 p-5">
                 <div className="flex items-center gap-2 text-muted-foreground">
                   <TrendingUp className="size-4 text-emerald-400" />
-                  <span className="text-xs font-medium">
+                  <span className="text-xs font-medium tracking-wide">
                     Organic Traffic Growth
                   </span>
                 </div>

@@ -13,10 +13,10 @@ export function Pagination() {
       <button
         type="button"
         disabled
-        className="flex h-10 items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-4 text-sm font-medium text-muted-foreground transition-colors hover:bg-white/10 hover:text-foreground disabled:pointer-events-none disabled:opacity-40"
+        className="flex h-10 items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-3 text-sm font-medium text-muted-foreground transition-colors hover:bg-white/10 hover:text-foreground disabled:pointer-events-none disabled:opacity-40 sm:px-4"
       >
         <ChevronLeft className="size-4" />
-        Previous
+        <span className="hidden sm:inline">Previous</span>
       </button>
 
       <div className="flex items-center gap-1.5">
@@ -39,9 +39,9 @@ export function Pagination() {
 
       <button
         type="button"
-        className="flex h-10 items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-4 text-sm font-medium text-muted-foreground transition-colors hover:border-indigo-400/30 hover:bg-white/10 hover:text-foreground"
+        className="flex h-10 items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-3 text-sm font-medium text-muted-foreground transition-colors hover:border-indigo-400/30 hover:bg-white/10 hover:text-foreground sm:px-4"
       >
-        Next
+        <span className="hidden sm:inline">Next</span>
         <ChevronRight className="size-4" />
       </button>
     </nav>

@@ -12,7 +12,7 @@ import { CTA } from "@/components/marketing/cta"
 
 export default function Home() {
   return (
-    <div className="dark flex min-h-screen flex-1 flex-col overflow-x-hidden bg-background font-sans text-foreground">
+    <div className="dark flex min-h-screen flex-1 flex-col bg-background font-sans text-foreground">
       <Navbar />
       <main className="flex flex-1 flex-col">
         <Hero />

@@ -68,16 +68,15 @@ const plans: Plan[] = [
 export function PricingPreview() {
   return (
     <section className="relative mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-20">
-      <div
-        aria-hidden
-        className="pointer-events-none absolute top-1/2 left-1/2 size-[700px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-purple-600/10 blur-3xl"
-      />
+      <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div className="absolute top-1/2 left-1/2 size-[700px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-purple-600/10 blur-3xl" />
+      </div>
 
       <div className="relative mx-auto max-w-2xl text-center">
         <span className="text-sm font-semibold tracking-wide text-indigo-400 uppercase">
           Pricing
         </span>
-        <h2 className="mt-3 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
+        <h2 className="font-heading mt-3 text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
           Simple, Transparent Pricing
         </h2>
         <p className="mt-5 text-lg leading-relaxed text-muted-foreground">
@@ -87,30 +86,30 @@ export function PricingPreview() {
 
       <div className="relative mt-16 grid grid-cols-1 gap-8 sm:grid-cols-3">
         {plans.map((plan) => (
-          <Card
-            key={plan.name}
-            className={cn(
-              "group relative flex flex-col overflow-hidden border bg-white/5 [--card-spacing:--spacing(8)] ring-0 backdrop-blur-2xl backdrop-saturate-150 transition-all duration-500",
-              plan.featured
-                ? "z-10 border-2 border-indigo-400/50 bg-gradient-to-b from-indigo-500/15 via-purple-600/10 to-transparent shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08),0_25px_60px_-15px_rgba(99,102,241,0.5)] sm:-translate-y-4 sm:scale-105 lg:scale-110 hover:-translate-y-5 hover:scale-[1.12] hover:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.12),0_35px_80px_-15px_rgba(99,102,241,0.75)]"
-                : "border-white/10 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06)] hover:-translate-y-2 hover:scale-[1.02] hover:border-white/20 hover:bg-white/8 hover:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08),0_20px_40px_-15px_rgba(0,0,0,0.5)]"
-            )}
-          >
+          <div key={plan.name} className="relative">
             {plan.featured && (
-              <div
-                aria-hidden
-                className="pointer-events-none absolute -top-20 left-1/2 size-56 -translate-x-1/2 rounded-full bg-gradient-to-br from-indigo-500/30 to-purple-600/30 blur-3xl"
-              />
-            )}
-
-            {plan.featured && (
-              <Badge className="absolute -top-3 left-1/2 flex -translate-x-1/2 items-center gap-1 border-0 bg-gradient-to-r from-indigo-500 to-purple-600 px-3 py-1 text-white shadow-lg shadow-indigo-950/50">
+              <Badge className="absolute -top-3 left-1/2 z-20 flex -translate-x-1/2 items-center gap-1 border-0 bg-gradient-to-r from-indigo-500 to-purple-600 px-3 py-1 text-white shadow-lg shadow-indigo-950/50">
                 <Crown className="size-3" />
                 Most Popular
               </Badge>
             )}
 
-            <CardHeader className="relative gap-0">
+            <Card
+              className={cn(
+                "group relative flex flex-col overflow-hidden border bg-white/5 [--card-spacing:--spacing(8)] ring-0 backdrop-blur-2xl backdrop-saturate-150 transition-all duration-500",
+                plan.featured
+                  ? "z-10 border-2 border-indigo-400/50 bg-gradient-to-b from-indigo-500/15 via-purple-600/10 to-transparent shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08),0_25px_60px_-15px_rgba(99,102,241,0.5)] sm:-translate-y-4 sm:scale-105 lg:scale-110 hover:-translate-y-5 hover:scale-[1.12] hover:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.12),0_35px_80px_-15px_rgba(99,102,241,0.75)]"
+                  : "border-white/10 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06)] hover:-translate-y-2 hover:scale-[1.02] hover:border-white/20 hover:bg-white/8 hover:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08),0_20px_40px_-15px_rgba(0,0,0,0.5)]"
+              )}
+            >
+              {plan.featured && (
+                <div
+                  aria-hidden
+                  className="pointer-events-none absolute -top-20 left-1/2 size-56 -translate-x-1/2 rounded-full bg-gradient-to-br from-indigo-500/30 to-purple-600/30 blur-3xl"
+                />
+              )}
+
+              <CardHeader className="relative gap-0">
               <CardTitle
                 className={cn(
                   "font-semibold text-foreground",
@@ -180,7 +179,8 @@ export function PricingPreview() {
                 </Link>
               </Button>
             </CardContent>
-          </Card>
+            </Card>
+          </div>
         ))}
       </div>
 

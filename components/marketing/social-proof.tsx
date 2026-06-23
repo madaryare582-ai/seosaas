@@ -89,7 +89,7 @@ function StatCard({ stat }: { stat: Stat }) {
 
 export function SocialProof() {
   return (
-    <section className="relative mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-20">
+    <section className="relative mx-auto max-w-7xl overflow-hidden px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-20">
       <div
         aria-hidden
         className="pointer-events-none absolute -top-32 inset-x-0 h-64 bg-gradient-to-b from-indigo-600/15 via-purple-600/5 to-transparent blur-3xl"

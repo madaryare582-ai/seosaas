@@ -101,12 +101,12 @@ export function FAQ({
   showSupport = true,
 }: FAQProps = {}) {
   return (
-    <section className="relative mx-auto max-w-3xl px-4 py-10 sm:px-6 sm:py-14 lg:px-8 lg:py-16">
+    <section className="relative mx-auto max-w-3xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-20">
       <div className="mx-auto max-w-2xl text-center">
         <span className="text-sm font-semibold tracking-wide text-indigo-400 uppercase">
           {eyebrow}
         </span>
-        <h2 className="mt-3 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
+        <h2 className="font-heading mt-3 text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
           Frequently Asked Questions
         </h2>
         <p className="mt-5 text-lg leading-relaxed text-muted-foreground">
@@ -147,7 +147,7 @@ export function FAQ({
           <span className="relative mx-auto flex size-12 items-center justify-center rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-600 shadow-lg shadow-indigo-950/40 ring-1 ring-white/15">
             <LifeBuoy className="size-6 text-white" />
           </span>
-          <h3 className="relative mt-5 text-xl font-semibold tracking-tight text-foreground">
+          <h3 className="font-heading relative mt-5 text-xl font-semibold tracking-tight text-foreground">
             Still Have Questions?
           </h3>
           <p className="relative mt-2 text-base text-muted-foreground">

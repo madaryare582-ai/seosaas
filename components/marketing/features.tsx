@@ -55,16 +55,15 @@ export function Features() {
       id="features"
       className="relative mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-20"
     >
-      <div
-        aria-hidden
-        className="pointer-events-none absolute top-0 left-1/2 size-[600px] -translate-x-1/2 rounded-full bg-indigo-600/10 blur-3xl"
-      />
+      <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div className="absolute top-0 left-1/2 size-[600px] -translate-x-1/2 rounded-full bg-indigo-600/10 blur-3xl" />
+      </div>
 
       <div className="relative mx-auto max-w-2xl text-center">
         <span className="text-sm font-semibold tracking-wide text-indigo-400 uppercase">
           Platform
         </span>
-        <h2 className="mt-3 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
+        <h2 className="font-heading mt-3 text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
           Everything You Need To Scale SEO Content
         </h2>
         <p className="mt-5 text-lg leading-relaxed text-muted-foreground">
@@ -88,7 +87,7 @@ export function Features() {
               <feature.icon className="size-6 text-white" />
             </span>
 
-            <h3 className="relative mt-6 text-lg font-semibold text-foreground">
+            <h3 className="font-heading relative mt-6 text-lg font-semibold text-foreground">
               {feature.title}
             </h3>
 
