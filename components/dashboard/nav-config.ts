@@ -1,4 +1,5 @@
 import {
+  Compass,
   CreditCard,
   FileText,
   Gauge,
@@ -17,6 +18,7 @@ export type NavItem = {
 
 export const navItems: NavItem[] = [
   { label: "Overview", href: "/dashboard", icon: Gauge },
+  { label: "Niche Finder", href: "/dashboard/niche-finder", icon: Compass },
   { label: "Content Planner", href: "/dashboard/content-planner", icon: ListChecks },
   { label: "Topical Authority", href: "/dashboard/topical-authority", icon: Network },
   { label: "Article Generator", href: "/dashboard/article-generator", icon: FileText },
