@@ -1,32 +1,49 @@
 "use client"
 
-import { ArticleOutputPanel } from "@/components/dashboard/article-generator/article-output-panel"
-import { GenerateForm } from "@/components/dashboard/article-generator/generate-form"
-import { useArticleGeneration } from "@/components/dashboard/article-generator/use-article-generation"
+import * as React from "react"
+
+import { ConfigForm } from "@/components/dashboard/article-generator/config-form"
+import { ContentWorkspace } from "@/components/dashboard/article-generator/content-workspace"
+import { ResizableSplit } from "@/components/dashboard/article-generator/resizable-split"
+import { SeoScoringPanel } from "@/components/dashboard/article-generator/seo-scoring-panel"
+import { useArticleWorkspace } from "@/components/dashboard/article-generator/use-article-workspace"
+import type { ArticleEditorHandle } from "@/components/dashboard/article-generator/editor/article-editor"
+import { analyzeSeo, type HeadingInfo } from "@/lib/seo-analysis"
 
 export function ArticleGeneratorPanel() {
-  const generation = useArticleGeneration()
+  const workspace = useArticleWorkspace()
+  const editorRef = React.useRef<ArticleEditorHandle>(null)
+  const [editorContent, setEditorContent] = React.useState<{
+    text: string
+    html: string
+    headings: HeadingInfo[]
+  } | null>(null)
+
+  const analysis = React.useMemo(() => {
+    if (!editorContent) return null
+    return analyzeSeo(editorContent.text, editorContent.html, editorContent.headings, workspace.config)
+  }, [editorContent, workspace.config])
 
   return (
-    <>
-      <GenerateForm
-        phase={generation.phase}
-        stepIndex={generation.stepIndex}
-        progress={generation.progress}
-        onGenerate={generation.start}
-      />
-
-      {generation.phase !== "idle" && (
-        <ArticleOutputPanel
-          phase={generation.phase}
-          revealCount={generation.revealCount}
-          wordCount={generation.wordCount}
-          readingTime={generation.readingTime}
-          status={generation.status}
-          progress={generation.progress}
-          seoScore={generation.seoScore}
+    <ResizableSplit
+      left={
+        <ConfigForm
+          config={workspace.config}
+          onChange={workspace.updateConfig}
+          phase={workspace.phase}
+          onGenerate={workspace.generate}
         />
-      )}
-    </>
+      }
+      right={
+        <div className="flex flex-col gap-4 xl:flex-row xl:items-start">
+          <div className="min-w-0 flex-1">
+            <ContentWorkspace workspace={workspace} editorRef={editorRef} onEditorUpdate={setEditorContent} />
+          </div>
+          <div className="w-full xl:sticky xl:top-6 xl:w-72 xl:shrink-0">
+            <SeoScoringPanel analysis={analysis} />
+          </div>
+        </div>
+      }
+    />
   )
 }

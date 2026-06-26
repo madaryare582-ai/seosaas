@@ -5,12 +5,12 @@ import { Loader2, Pencil, Sparkles, Trash2 } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import { GenerationProgress } from "@/components/dashboard/article-generator/generation-progress"
-import { useArticleGeneration } from "@/components/dashboard/article-generator/use-article-generation"
+import { useGenerationTimer } from "@/components/dashboard/article-generator/use-generation-timer"
 import { useNicheFinder } from "@/components/dashboard/niche-finder/use-niche-finder"
 
 export function ContentQueueSection() {
   const { queue, removeFromQueue, completeNextArticle, dailyUsage } = useNicheFinder()
-  const { phase, stepIndex, progress, start } = useArticleGeneration()
+  const { phase, stepIndex, progress, start } = useGenerationTimer()
   const [isActive, setIsActive] = React.useState(false)
   const [editMode, setEditMode] = React.useState(false)
 
